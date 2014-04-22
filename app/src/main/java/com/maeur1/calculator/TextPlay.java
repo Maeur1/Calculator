@@ -16,30 +16,32 @@ import java.util.Random;
 /**
  * Created by Mayur on 21/04/14.
  */
-public class TextPlay extends Activity{
+public class TextPlay extends Activity implements View.OnClickListener{
+
+    Button chkCmd;
+    ToggleButton passTog;
+    EditText input;
+    TextView display;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.text);
+        baconAndEggs();
+        passTog.setOnClickListener(this);
+        chkCmd.setOnClickListener(this);
+    }
 
-        Button chkCmd = (Button) findViewById(R.id.bResults);
-        final ToggleButton passTog = (ToggleButton) findViewById(R.id.tbPassword);
-        final EditText input = (EditText) findViewById(R.id.etCommands);
-        final TextView display = (TextView) findViewById(R.id.tvResults);
+    private void baconAndEggs() {
+        chkCmd = (Button) findViewById(R.id.bResults);
+        passTog = (ToggleButton) findViewById(R.id.tbPassword);
+        input = (EditText) findViewById(R.id.etCommands);
+        display = (TextView) findViewById(R.id.tvResults);
+    }
 
-        passTog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (passTog.isChecked()) {
-                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                } else {
-                    input.setInputType(InputType.TYPE_CLASS_TEXT);
-                }
-            }
-        });
-        chkCmd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.bResults:
                 String check = input.getText().toString();
                 display.setText(check);
                 if (check.contentEquals("left")) {
@@ -55,11 +57,30 @@ public class TextPlay extends Activity{
                     display.setText("WTF!!!!");
                     display.setTextSize(crazy.nextInt(75));
                     display.setTextColor(Color.rgb(crazy.nextInt(255), crazy.nextInt(255), crazy.nextInt(255)));
+                    switch(crazy.nextInt(3)){
+                        case 0:
+                            display.setGravity(Gravity.LEFT);
+                            break;
+                        case 1:
+                            display.setGravity(Gravity.CENTER);
+                            break;
+                        case 2:
+                            display.setGravity(Gravity.RIGHT);
+                            break;
+                    }
                 } else {
                     display.setText("invalid");
                     display.setGravity(Gravity.CENTER);
+                    display.setTextColor(Color.WHITE);
                 }
-            }
-        });
+                break;
+            case R.id.tbPassword:
+                if (passTog.isChecked()) {
+                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                } else {
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                }
+                break;
+        }
     }
 }

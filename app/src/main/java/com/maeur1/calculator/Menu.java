@@ -6,20 +6,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 /**
  * Created by Mayur on 20/04/14.
  */
 public class Menu extends ListActivity{
 
-    String classes[] = {"MainActivity", "TextPlay", "example2", "example3", "example4", "example5", "example6"};
+    String classes[] = {"MainActivity", "TextPlay", "Email", "Camera", "example4", "example5", "example6"};
 
-
+    int k;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setListAdapter(new ArrayAdapter<String>(Menu.this, android.R.layout.simple_list_item_1, classes));
+    }
+
+    public void onBackPressed() {
+        finish();
     }
 
     @Override
