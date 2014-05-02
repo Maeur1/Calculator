@@ -2,8 +2,10 @@ package com.maeur1.calculator;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 
 public class Splash extends Activity{
@@ -15,12 +17,17 @@ public class Splash extends Activity{
         super.onCreate(ThisIsBacon);
         setContentView(R.layout.splash);
         ourSong = MediaPlayer.create(Splash.this, R.raw.splash);
-        ourSong.start();
+        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        if(getPrefs.getBoolean("checkbox", true))
+            ourSong.start();
+
         timer = new Thread(){
             public void run() {
                 try {
                     sleep(5000);
                 } catch (InterruptedException e) {
+                    Intent openStartingPoint = new Intent("android.intent.action.MENU");
+                    startActivity(openStartingPoint);
                     return;
                 }
                 if(!isInterrupted()) {
@@ -35,10 +42,9 @@ public class Splash extends Activity{
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         timer.interrupt();
-        Intent openStartingPoint = new Intent("android.intent.action.MENU");
-        startActivity(openStartingPoint);
         return true;
     }
+
 
     @Override
     protected void onPause() {

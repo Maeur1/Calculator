@@ -8,41 +8,66 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.maeur1.calculator.Splash"
-            android:label="@string/app_name" >
+            android:name=".Splash"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.maeur1.calculator.MainActivity"
-            android:label="Number Thing" >
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAINACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.maeur1.calculator.Menu"
-            android:label="Menu thing" >
+            android:name=".Menu"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MENU" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.maeur1.calculator.TextPlay"
-            android:label="Text Play Thing" >
+            android:name=".Prefs"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.PREFS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
-            android:name="com.maeur1.calculator.Email"
-            android:label="Email Thing" >
+            android:name=".AboutUs"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.ABOUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
-            android:name="com.maeur1.calculator.Camera"
-            android:label="Camera Thing"
+            android:name=".TextPlay"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Email"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Camera"
+            android:label="@string/app_name"
             android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Data"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".OpenedClass"
+            android:label="Get Thing" >
         </activity>
     </application>
 
